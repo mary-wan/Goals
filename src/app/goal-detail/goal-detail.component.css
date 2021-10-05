@@ -3,5 +3,6 @@ span{
     margin-left: 30px;
 }
 i:hover{
-    color: darkred;
+    /* color: darkred; */
+    animation: bounce 3s infinite;
 }

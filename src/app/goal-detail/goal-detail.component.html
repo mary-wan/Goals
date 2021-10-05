@@ -1,8 +1,14 @@
 <p>{{goal.description}}</p>
 
-<p>This goal will be complete in {{goal.completeDate|dateCount}} days</p>
+<!-- <p>This goal will be complete in {{goal.completeDate|dateCount}} days</p> -->
 
 <!-- <button (click)= 'goalComplete(true)' class="btn btn-danger">DELETE</button> -->
+<span style="font-size: 1.2em; color: green;" (click)="upVote()">
+  <i class="fa fa-thumbs-up">Upvote</i>
+</span> {{upvotes}} 
+<span style="font-size: 1.2em; color: red;" (click)="downVote()">
+  <i class="fa fa-thumbs-down">Downvote</i>
+</span> {{downvotes}}
 <span style="font-size: 1.2em; color: red;">
-    <i class="fa fa-trash" aria-hidden="true" (click)= 'goalComplete(true)'>DELETE</i>
-  </span>
+  <i class="fa fa-trash" aria-hidden="true" (click)='goalComplete(true)'></i>
+</span>

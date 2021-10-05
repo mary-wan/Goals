@@ -15,6 +15,17 @@ export class GoalDetailComponent implements OnInit {
   goalComplete(complete:boolean){
     this.isComplete.emit(complete);
   }
+  upvotes = 0;
+  downvotes = 0;
+
+  upVote(){
+    this.upvotes = this.upvotes + 1;
+  }
+
+  downVote(){
+    this.downvotes = this.downvotes + 1;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
