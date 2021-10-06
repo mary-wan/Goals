@@ -1,0 +1,17 @@
+form{
+    background-image: url("src/assets/form.jpg");
+    background-attachment: fixed;
+    background-size: cover;  
+  
+}
+.form-group{
+    width: 80%;
+    margin-left: 10%;
+}
+.alert-danger{
+    width: 80%;
+}
+.btn{
+    margin-left: 30%;
+    margin-bottom: 10px;
+}

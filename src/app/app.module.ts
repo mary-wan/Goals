@@ -9,8 +9,20 @@ import { GoalComponent } from './goal/goal.component';
 import { GoalDetailComponent } from './goal-detail/goal-detail.component';
 import { StrikethroughDirective } from './strikethrough.directive';
 import { DateCountPipe } from './date-count.pipe';
+// import { TimeAgoPipe } from 'time-ago-pipe';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TimeAgoPipe } from 'ngx-pipes';
 
+@Pipe({
+  name: 'timeAgo',
+  pure: false
+})
+export class TimeAgoExtendsPipe extends TimeAgoPipe {
 
+  // transform(value: string|Date): string {
+  //   return super.transform(value);
+  // }
+}
 
 @NgModule({
   declarations: [
@@ -20,6 +32,8 @@ import { DateCountPipe } from './date-count.pipe';
     GoalDetailComponent,
     StrikethroughDirective,
     DateCountPipe,
+    NavbarComponent,
+    TimeAgoExtendsPipe,
    
     
   ],
@@ -27,7 +41,7 @@ import { DateCountPipe } from './date-count.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-  
+    // TimeAgoPipe
    
   ],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Goal } from '../goal';
 
 @Component({
@@ -11,7 +11,7 @@ export class GoalComponent implements OnInit {
     this.goals[index].showDescription = !this.goals[index].showDescription;
   }
   goals: Goal[] = [
-    new Goal(1, 'Watch finding Nemo', 'Find an online version and watch merlin find his son',new Date(2010,10,5)),
+    new Goal(1, 'Watch finding Nemo', 'Find an online version and watch merlin find his son',new Date(2010,9,5)),
     new Goal(2,'Buy Cookies','I have to buy cookies for the parrot',new Date(2019,6,9)),
     new Goal(3,'Get new Phone Case','Diana has her birthday coming up soon',new Date(2004,1,12)),
     // new Goal(4,'Get Dog Food','Pupper likes expensive snacks',new Date(2019,0,18)),
@@ -31,12 +31,12 @@ export class GoalComponent implements OnInit {
     let goalLength = this.goals.length;
     goal.id = goalLength+1;
     goal.completeDate = new Date(goal.completeDate)
-    this.goals.push(goal)
+    this.goals.unshift(goal)
   }
   
 
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }
