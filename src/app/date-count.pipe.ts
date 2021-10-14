@@ -1,37 +1,43 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 @Pipe({
   name: 'dateCount',
   pure: false
 })
-export class DateCountPipe implements PipeTransform {
+export class DateCountPipe extends TimeAgoPipe implements PipeTransform, OnDestroy{
+    transform(value: any, ...args: any[]):any{};
+     ngOnDestroy(): void{};
+}
 
-  transform(value: any): any {
-    if (value) {
-        const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
-        if (seconds < 30) // less than 30 seconds ago will show as 'Just now'
-            return 'Just now';
-        const intervals:any = {
-            'year': 31536000,
-            'month': 2592000,
-            'week': 604800,
-            'day': 86400,
-            'hour': 3600,
-            'minute': 60,
-            'second': 1
-        };
-        let counter;
-        for (const i in intervals) {
-            counter = Math.floor(seconds / intervals[i]);
-            if (counter > 0)
-                if (counter === 1) {
-                    return counter + ' ' + i + ' ago'; // singular (1 day ago)
-                } else {
-                    return counter + ' ' + i + 's ago'; // plural (2 days ago)
-                }
-        }
-    }
-    return value;
-}
-}
+// export class DateCountPipe implements PipeTransform {
+
+//   transform(value: any): any {
+//     if (value) {
+//         const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
+//         if (seconds < 30) // less than 30 seconds ago will show as 'Just now'
+//             return 'Just now';
+//         const intervals:any = {
+//             'year': 31536000,
+//             'month': 2592000,
+//             'week': 604800,
+//             'day': 86400,
+//             'hour': 3600,
+//             'minute': 60,
+//             'second': 1
+//         };
+//         let counter;
+//         for (const i in intervals) {
+//             counter = Math.floor(seconds / intervals[i]);
+//             if (counter > 0)
+//                 if (counter === 1) {
+//                     return counter + ' ' + i + ' ago'; // singular (1 day ago)
+//                 } else {
+//                     return counter + ' ' + i + 's ago'; // plural (2 days ago)
+//                 }
+//         }
+//     }
+//     return value;
+// }
+// }
 

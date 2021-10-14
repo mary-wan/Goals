@@ -1,28 +1,34 @@
-import { NgModule, Pipe } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { FormComponentComponent } from './form-component/form-component.component';
 import { GoalComponent } from './goal/goal.component';
 import { GoalDetailComponent } from './goal-detail/goal-detail.component';
 import { StrikethroughDirective } from './strikethrough.directive';
 import { DateCountPipe } from './date-count.pipe';
-// import { TimeAgoPipe } from 'time-ago-pipe';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TimeAgoPipe } from 'ngx-pipes';
+import { GoalService } from './goal-service/goal.service';
+import { AlertService } from './alert-service/alert.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpClientModule } from '@ngx-progressbar/http-client';
+import { AboutComponent } from './about/about.component';
+import { QuoteComponent } from './quote/quote.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
-@Pipe({
-  name: 'timeAgo',
-  pure: false
-})
-export class TimeAgoExtendsPipe extends TimeAgoPipe {
-
-  // transform(value: string|Date): string {
-  //   return super.transform(value);
-  // }
-}
+const routes: Routes = [
+  { path: 'goals', component: GoalComponent},
+  { path: 'goals/:id', component: GoalDetailComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'quotes', component: QuoteComponent },
+  {path:'',redirectTo:'goals', pathMatch: 'full'},
+  { path:'**', component:NotFoundComponent},
+];
 
 @NgModule({
   declarations: [
@@ -33,18 +39,23 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {
     StrikethroughDirective,
     DateCountPipe,
     NavbarComponent,
-    TimeAgoExtendsPipe,
-   
-    
+    AboutComponent,
+    QuoteComponent,
+    NotFoundComponent,
+
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     FormsModule,
-    // TimeAgoPipe
+    HttpClientModule,
+    NgProgressModule.forRoot(),
+    NgProgressHttpClientModule
    
   ],
-  providers: [],
+  exports: [RouterModule],
+  providers: [GoalService,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

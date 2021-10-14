@@ -1,6 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
 
 body {
     background: #CFEED1 !important;
+  }
+  h1{
+    font-family: 'Aladin', cursive;
   }

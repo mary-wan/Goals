@@ -1,6 +1,5 @@
-<div class="container">
-  <hr>
-  <div class="row">
+<div class="container mt-2">
+  <h1 class="text-center">ALL THE RIGHT GOALS</h1>  <div class="row">
     <div class="col-md-6">
       <app-form-component (addGoal)= "addNewGoal($event)"></app-form-component>
     </div>
@@ -10,7 +9,7 @@
           <h6 id={{i}} appStrikethrough>{{goal.name}}</h6>
         </div>
         <div class="card-body">
-          <!-- <button (click)='toggleDetails(i)' class="btn btn-primary mb-2">Toggle Details</button> -->
+          <button (click)='toggleDetails(i)' class="btn btn-primary mb-2">Toggle Details</button>
           <div *ngIf='goal.showDescription'>
             <app-goal-detail [goal]='goal' (isComplete) = 'completeGoal($event,i)'></app-goal-detail>
           </div>
@@ -23,5 +22,7 @@
     </div>
   
   </div>
-  <p *ngIf='goals.length > 5'>You have too many goals</p>
+  <p *ngIf='goals.length ==0' class="alert-warning">OOPS! You have no goals</p>
 </div>
+
+
