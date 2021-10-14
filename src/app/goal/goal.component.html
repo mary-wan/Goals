@@ -9,10 +9,12 @@
           <h6 id={{i}} appStrikethrough>{{goal.name}}</h6>
         </div>
         <div class="card-body">
-          <button (click)='toggleDetails(i)' class="btn btn-primary mb-2">Toggle Details</button>
+          <!-- <button (click)='toggleDetails(i)' class="btn btn-primary mb-2">Toggle Details</button>
           <div *ngIf='goal.showDescription'>
             <app-goal-detail [goal]='goal' (isComplete) = 'completeGoal($event,i)'></app-goal-detail>
-          </div>
+          </div> -->
+          <button class="btn btn-primary m-2" (click)='goToUrl(goal.id)'>View Details</button>
+          <button class="btn btn-outline-danger m-2" (click)='deleteGoal(i)'>Delete Goal</button>
         </div>
         <div class="card-footer text-muted">
          Posted: {{goal.completeDate|date|uppercase}} <br>

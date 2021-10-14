@@ -1,11 +1,20 @@
-<p>{{goal.description}}</p>
+<div class="row mt-2">
+  <div class="col-md-2">
 
-<span style="font-size: 1.2em; color: green;" (click)="upVote()">
-  <i class="fa fa-thumbs-up">Upvote</i>
-</span> {{upvotes}} 
-<span style="font-size: 1.2em; color: red;" (click)="downVote()">
-  <i class="fa fa-thumbs-down">Downvote</i>
-</span> {{downvotes}}
-<span style="font-size: 1.2em; color: red;">
-  <i class="fa fa-trash" aria-hidden="true" (click)='goalComplete(true)'></i>
-</span>
+  </div>
+  <div class="col-md-8">
+    <button class=" btn btn-primary m-2 btn-large" (click)= "redirect()">BACK</button>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{goal.description}}</h5>
+      </div>
+      <div class="card-footer">
+        <p class="card-text pt-2">This goal will be complete on {{goal.completeDate|date}}.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+
+  </div>
+</div>
+<router-outlet></router-outlet>

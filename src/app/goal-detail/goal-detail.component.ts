@@ -1,6 +1,8 @@
 import { Goal } from './../goal';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import {  ActivatedRoute, ParamMap } from '@angular/router';
+import { GoalService } from '../goal-service/goal.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-goal-detail',
   templateUrl: './goal-detail.component.html',
@@ -15,20 +17,16 @@ export class GoalDetailComponent implements OnInit {
   goalComplete(complete:boolean){
     this.isComplete.emit(complete);
   }
-  upvotes = 0;
-  downvotes = 0;
 
-  upVote(){
-    this.upvotes = this.upvotes + 1;
+
+  constructor(private route:ActivatedRoute, private service:GoalService,private router:Router) { }
+
+  ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.goal = this.service.getGoal(id)
   }
-
-  downVote(){
-    this.downvotes = this.downvotes + 1;
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
+  redirect(){
+    this.router.navigate(['goals']);
   }
 
 }

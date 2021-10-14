@@ -21,14 +21,14 @@ import { AboutComponent } from './about/about.component';
 import { QuoteComponent } from './quote/quote.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-const routes: Routes = [
-  { path: 'goals', component: GoalComponent},
-  { path: 'goals/:id', component: GoalDetailComponent },
-  { path: 'about', component: AboutComponent},
-  { path: 'quotes', component: QuoteComponent },
-  {path:'',redirectTo:'goals', pathMatch: 'full'},
-  { path:'**', component:NotFoundComponent},
-];
+// const routes: Routes = [
+//   { path: 'goals', component: GoalComponent},
+//   { path: 'goals/:id', component: GoalDetailComponent },
+//   { path: 'about', component: AboutComponent},
+//   { path: 'quotes', component: QuoteComponent },
+//   {path:'',redirectTo:'goals', pathMatch: 'full'},
+//   { path:'**', component:NotFoundComponent},
+// ];
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
+    // RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
